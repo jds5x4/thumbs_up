@@ -4,6 +4,12 @@ ThumbsUp
 A ridiculously straightforward and simple package 'o' code to enable voting in your application, a la stackoverflow.com, etc.
 Allows an arbitrary number of entities (users, etc.) to vote on models.
 
+### Subclassed Branch
+This branch is for when the voter object is a subclass of another object. Polymorphic associations refer to the base_class and the Vote.where() methods in the master branch use the Voter.class.name as the voter\_type creating errors when trying to cast an 'exclusive' vote because the clear method does not use the correct voter\_type to clear the previous vote.
+
+ActiveRecord::lib/active_record/associations/belongs\_to\_polymorphic\_association.rb
+Line 14: "owner[reflection.foreign_type] = record && record.class.base\_class.name"
+
 ### Mixins
 This plugin introduces three mixins to your recipe book:
 
